@@ -15,7 +15,7 @@ type Movie = {
 
 function FullMovie() {
   const [movie, setMovie] = useState<Movie | null>(null);
-  const url = "http://localhost:3000/peliculas";
+  const url = import.meta.env.VITE_APIURL;
   const { id } = useParams<{ id?: string }>();
 
   async function fetchMovie() {
