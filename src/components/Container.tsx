@@ -17,7 +17,7 @@ function Container() {
 
   const url = import.meta.env.VITE_APIURL;
   const { pagina } = useParams<{ pagina?: string }>();
-
+  const numeroPagina = parseInt(pagina ?? "", 10);
   async function fetchMovies() {
     if (pagina && parseInt(pagina) >= 1) {
       const foundMovies = await axios.get(`${url}?page=${pagina}`);
@@ -39,7 +39,7 @@ function Container() {
       {moviesList ? (
         <div className="md:container md:mx-auto" id="movies">
           <div className="pb-5">
-            <Pagination pagina={pagina} />
+            {!isNaN(numeroPagina) ? <Pagination pagina={numeroPagina} /> : ""}
           </div>
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8 ">
             {moviesList.map((movie: any) => (
@@ -54,7 +54,7 @@ function Container() {
             ))}
           </div>
           <div className="float-right pt-5 pb-5">
-            <Pagination pagina={pagina} />
+            {!isNaN(numeroPagina) ? <Pagination pagina={numeroPagina} /> : ""}
           </div>
         </div>
       ) : (
