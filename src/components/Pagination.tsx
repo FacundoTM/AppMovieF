@@ -1,5 +1,5 @@
 function Pagination({ pagina }: { pagina: number }) {
-  const url = `${import.meta.env.VITE_URL || "http://localhost:5173/"}`;
+  const url = `${import.meta.env.VITE_URL}`;
 
   return (
     <>
