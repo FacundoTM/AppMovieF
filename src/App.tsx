@@ -32,7 +32,8 @@ function App() {
   async function fetchBusqueda(busqueda: string) {
     const url = import.meta.env.VITE_APIURL;
     const foundMovies = await axios.get(`${url}?busqueda=${busqueda}`);
-    foundMovies.data.results.length === "0"
+
+    foundMovies.data.results.length > 0
       ? setMoviesList(foundMovies.data.results)
       : notify();
   }
